@@ -1,13 +1,13 @@
 # Topology-Scanner
 A topology scanner using Nmap with Arp for python3
 
-##Requirements
+## Requirements
 ```
 sudo apt-get install python3-pip
 sudo pip -r requirements.txt
 ```
 
-##Usage :
+## Usage :
 ```
 python topology.py <interface> <subnets>
     

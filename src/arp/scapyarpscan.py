@@ -20,15 +20,13 @@ class ScapyArpscan(Arpscan):
 
     def subnet(self):
         print("Subnet set")
-        self._subnets =["10.0.2.0/24"]
+        self._subnets =["10.0.2.0/24","10.0.3.0/24"]
 
     def scan(self):
         print("Scanning initiated :\n")
 
-        for subnet in self._subnets :
-
-            answers, uans = srp(Ether(dst="FF:FF:FF:FF:FF:FF") / ARP(pdst=subnet), timeout=2, iface=self._interface, inter=0.1)
-            answers.summary()
+        answers, uans = srp(Ether(dst="FF:FF:FF:FF:FF:FF") / ARP(pdst=self._subnets), timeout=2, iface=self._interface)
+        answers.summary()
 
 
         print("Scan complete")

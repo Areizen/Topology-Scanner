@@ -21,7 +21,6 @@ class ScapyArpscan(Arpscan):
         pass
 
     def scan(self):
-        print("Scanning initiated :\n")
         print("Scanning subnets : \n" + str(self._subnets) + "\n")
         answers, uans = srp(Ether(dst="FF:FF:FF:FF:FF:FF") / ARP(pdst=self._subnets), timeout=2, iface=self._interface)
 
@@ -30,5 +29,4 @@ class ScapyArpscan(Arpscan):
             ips.append(received[ARP].psrc)
             print("IP Found : "+received[ARP].psrc)
 
-        print("Scan complete")
         return ips

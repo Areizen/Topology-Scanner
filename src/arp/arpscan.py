@@ -8,6 +8,7 @@ class Arpscan :
     def __init__(self):
         self._interface = None
         self._subnets = None
+        self.ips = None
 
 
     """

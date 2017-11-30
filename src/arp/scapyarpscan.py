@@ -8,25 +8,27 @@ from scapy.all import srp,Ether,ARP,conf
 
 class ScapyArpscan(Arpscan):
 
-    def __init__(self):
+    def __init__(self,interface,subnets):
         Arpscan()
-        self.interface()
-        self.subnet()
-        self.scan()
+        self._interface = interface
+        self._subnets = subnets.split(",")
+        self.ips = self.scan()
 
     def interface(self):
-        print("Interface set")
-        self._interface="eth0"
+        pass
 
     def subnet(self):
-        print("Subnet set")
-        self._subnets =["10.0.2.0/24","10.0.3.0/24"]
+        pass
 
     def scan(self):
         print("Scanning initiated :\n")
-
+        print("Scanning subnets : \n" + str(self._subnets) + "\n")
         answers, uans = srp(Ether(dst="FF:FF:FF:FF:FF:FF") / ARP(pdst=self._subnets), timeout=2, iface=self._interface)
-        answers.summary()
 
+        ips = []
+        for send, received in answers:
+            ips.append(received[ARP].psrc)
+            print("IP Found : "+received[ARP].psrc)
 
         print("Scan complete")
+        return ips

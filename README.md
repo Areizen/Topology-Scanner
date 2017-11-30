@@ -3,8 +3,8 @@ A topology scanner using Nmap with Arp for python3
 
 ## Requirements
 ```
-sudo apt-get install python3-pip
-sudo pip -r requirements.txt
+sudo apt-get install -y python3-pip
+sudo pip3 -r requirements.txt
 ```
 
 ## Usage :

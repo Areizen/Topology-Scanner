@@ -2,8 +2,9 @@ from libnmap.process import NmapProcess
 
 class Nmap:
 
-    def __init__(self,ip_list):
+    def __init__(self,ip_list,outfile="out.xml"):
         self.ips = ip_list
+        self.outfile = outfile
 
 
     def scan(self):
